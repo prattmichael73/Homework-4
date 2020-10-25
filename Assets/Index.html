@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<script>
+
+    var mins = 1;
+
+    var secs = mins * 60;
+
+    function countdown() {
+        setTimeout('Decrement()', 60);
+    }
+
+    function Decrement() {
+        if (document.getElementById) {
+            minutes = document.getElementById("minutes");
+            seconds = document.getElementById("seconds");
+
+            if (seconds < 59) {
+                seconds.value = secs;
+            }
+
+            else {
+                minutes.value = getminutes();
+                seconds.value = getseconds();
+            }
+
+            if (mins < 1) {
+                minutes.style.color = "black";
+                seconds.style.color = "black";
+            }
+
+            if (mins < 0) {
+                alert('time up');
+                minutes.value = 0;
+                seconds.value = 0;
+            }
+
+            else {
+                secs--;
+                setTimeout('Decrement()', 1000);
+            }
+        }
+    }
+
+    function getminutes() {
+        mins = Math.floor(secs / 60);
+        return mins;
+    }
+
+    function getseconds() {
+        return secs - Math.round(mins * 60);
+    } 
+</script>
+
+<body onload="countdown();">
+    <div>
+        Time Left ::
+        <input id="minutes" type="text" style="width: 10px; 
+                    border: none; font-size: 16px; 
+                    font-weight: bold; color: black;">
+        <font-size="5": font>
+            <input id="seconds" type="text" style="width: 20px; 
+                                border: none; font-size: 16px; 
+                                font-weight: bold; color: black;">
+
+            <head>
+
+    </div>
+</body>
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="style.css" rel="stylesheet">
+    <script defer src="script.js"></script>
+    <title>Quiz app</title>
+</head>
+
+<body>
+    <div class="container">
+        <div id="question-container" class="hide">
+            <div id="question">Question</div>
+            <div id="answer-buttons" class="btn-grid">
+                <button class="btn">Answer 1</button>
+                <button class="btn">Answer 2</button>
+                <button class="btn">Answer 3</button>
+                <button class="btn">Answer 4</button>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="start-btn" class="start-btn btn">Start</button>
+            <button id="next-btn" class="next-btn btn hide">Next</button>
+        </div>
+    </div>
+</body>
+
+</html>
